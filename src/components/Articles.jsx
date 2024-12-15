@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { client } from "../utils/fetchClient";
 import SkeletonArticle from "../skeletons/SkeletonArticle/SkeletonArticle";
+import { useTheme } from "../hooks/useTheme";
 
 export default function Articles() {
   const [articles, setArticles] = useState(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const getArticles = async () => {
@@ -30,7 +32,7 @@ export default function Articles() {
         ))}
 
       {!articles &&
-        [1, 2, 3, 5, 6].map((n) => <SkeletonArticle key={n} theme="light" />)}
+        [1, 2, 3, 5, 6].map((n) => <SkeletonArticle key={n} theme={theme} />)}
     </section>
   );
 }

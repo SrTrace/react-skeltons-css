@@ -1,3 +1,23 @@
+:root {
+  /* Light theme colors */
+
+  --background-color: white;
+  --text-color: black;
+  --header-bg-color: #1e65ff;
+  --header-text-color: white;
+  --border-color: #eee;
+}
+
+body.dark-theme {
+  /* Dark theme colors */
+
+  --background-color: #232323;
+  --text-color: #e0e0e0;
+  --header-bg-color: #3333cc;
+  --header-text-color: white;
+  --border-color: #444;
+}
+
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,22 +31,35 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 header {
-  background-color: #1e65ff;
+  background-color: var(--header-bg-color);
   padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 
   h1 {
-    color: white;
+    color: var(--header-text-color);
     max-width: 1200px;
-    margin: 0 auto;
+    margin-block: 0;
+  }
+
+  .theme-btn {
+    all: unset;
+    width: 32px;
+    height: 32x;
+    border-radius: 40%;
   }
 }
 
 h2 {
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .content {

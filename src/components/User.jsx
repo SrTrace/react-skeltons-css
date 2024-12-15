@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { client } from "../utils/fetchClient";
 import SkeletonPofile from "../skeletons/SkeletonProfile/SkeletonPofile";
+import { useTheme } from "../hooks/useTheme";
 
 export default function User() {
   const [profile, setProfile] = useState(null);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const getUser = async () => {
@@ -30,7 +32,7 @@ export default function User() {
         </div>
       )}
 
-      {!profile && <SkeletonPofile theme="light" />}
+      {!profile && <SkeletonPofile theme={theme} />}
     </section>
   );
 }
