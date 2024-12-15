@@ -29,7 +29,8 @@ export default function Articles() {
           </article>
         ))}
 
-      {!articles && [1, 2, 3, 5, 6].map((n) => <SkeletonArticle key={n} />)}
+      {!articles &&
+        [1, 2, 3, 5, 6].map((n) => <SkeletonArticle key={n} theme="light" />)}
     </section>
   );
 }

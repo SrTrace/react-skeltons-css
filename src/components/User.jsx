@@ -30,7 +30,7 @@ export default function User() {
         </div>
       )}
 
-      {!profile && <SkeletonPofile />}
+      {!profile && <SkeletonPofile theme="light" />}
     </section>
   );
 }

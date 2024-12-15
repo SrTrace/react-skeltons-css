@@ -1,9 +1,12 @@
+/* eslint-disable react/prop-types */
 import "../SkeletonElement/SkeletonElement.css";
 import SkeletonElement from "../SkeletonElement/SkeletonElement";
 
-export default function SkeletonPofile() {
+export default function SkeletonPofile({ theme }) {
+  const themeClass = theme || "light";
+
   return (
-    <div className="skeleton-wrapper">
+    <div className={`skeleton-wrapper ${themeClass}`}>
       <div className="skeleton-profile">
         <div>
           <SkeletonElement type="avatar" />
