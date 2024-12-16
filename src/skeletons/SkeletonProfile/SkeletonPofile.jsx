@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import "../SkeletonElement/SkeletonElement.css";
 import SkeletonElement from "../SkeletonElement/SkeletonElement";
+import Shimmer from "../Shimmer/Shimmer";
 
 export default function SkeletonPofile({ theme }) {
   const themeClass = theme || "light";
@@ -17,6 +18,7 @@ export default function SkeletonPofile({ theme }) {
           <SkeletonElement type="text" />
         </div>
       </div>
+      <Shimmer />
     </div>
   );
 }
