@@ -36,6 +36,12 @@ body {
   color: var(--text-color);
 }
 
+h1,
+h2,
+h3 {
+  color: var(--text-color);
+}
+
 header {
   background-color: var(--header-bg-color);
   padding: 10px;

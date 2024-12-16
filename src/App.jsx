@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>React Skeletons</h1>
+        <h1 className="title is-1 mb-0">React Skeletons</h1>
         <button
           className="theme-btn"
           onClick={toggleTheme}

@@ -2,9 +2,13 @@ import { useEffect, useState } from "react";
 import { client } from "../utils/fetchClient";
 import SkeletonArticle from "../skeletons/SkeletonArticle/SkeletonArticle";
 import { useTheme } from "../hooks/useTheme";
+import Pagination from "./Pagination";
 
 export default function Articles() {
-  const [articles, setArticles] = useState(null);
+  const [articles, setArticles] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [articlesPerPage] = useState(10);
+
   const { theme } = useTheme();
 
   useEffect(() => {
@@ -19,19 +23,36 @@ export default function Articles() {
 
     getArticles();
   }, []);
+
+  // get current article
+  const indexOfLastArticle = currentPage * articlesPerPage;
+  const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
+  const currentArticles =
+    articles.slice(indexOfFirstArticle, indexOfLastArticle) || null;
+
+  // change page
+  const paginate = (pageNumeber) => setCurrentPage(pageNumeber);
+
   return (
     <section className="articles">
-      <h2>Articles</h2>
+      <h2 className="title is-2 has-text-black">Articles</h2>
 
-      {articles &&
-        articles.map((article) => (
+      {currentArticles &&
+        currentArticles.map((article) => (
           <article key={article.id} className="article">
-            <h3>{article.title}</h3>
+            <h3 className="title is-3 has-text-black">{article.title}</h3>
             <p>{article.body}</p>
           </article>
         ))}
 
-      {!articles &&
+      {currentArticles && (
+        <Pagination
+          articlesPerPage={articlesPerPage}
+          totalArticles={articles.length}
+          paginate={paginate}
+        />
+      )}
+      {articles.length === 0 &&
         [1, 2, 3, 5, 6].map((n) => <SkeletonArticle key={n} theme={theme} />)}
     </section>
   );
